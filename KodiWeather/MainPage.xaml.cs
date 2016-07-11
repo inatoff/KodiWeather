@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KodiWeatherCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace KodiWeather
 		public MainPage()
         {
             this.InitializeComponent();
+			GetCurrentWeatherModel();
         }
 
 		private void SplitMenuButton_Click(object sender, RoutedEventArgs e)
@@ -41,8 +43,7 @@ namespace KodiWeather
 		}
 		
 		private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			
+		{			
 			switch (IconsListBox.Items.IndexOf(IconsListBox.SelectedItem))
 			{
 				case 0:
@@ -63,6 +64,11 @@ namespace KodiWeather
 				default:
 					break;
 			}
+		}
+
+		private async void GetCurrentWeatherModel()
+		{
+			WeatherCache.CurrentWeatherModelCache = await WeatherProvider.GetWeatherAsync(ForecastMode.Current,"Kiev","ua");
 		}
 	}
 }

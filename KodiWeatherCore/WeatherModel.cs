@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace KodiWeatherCore
 {
+	public class WeatherCache
+	{
+		public static WeatherModel CurrentWeatherModelCache { get; set; }
+		public static WeatherModel ForecastWeatherModelCache { get; set; }
+		public static WeatherModel DailyWeatherModelCache { get; set; }
+	}
 	public class Coord
 	{
 		public double lon { get; set; }

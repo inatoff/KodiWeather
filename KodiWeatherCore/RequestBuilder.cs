@@ -9,7 +9,7 @@ namespace KodiWeatherCore
 	public static class RequestBuilder
 	{
 		private static readonly string _apiKey = "?appid=d44d8df2305f9ff9055e66dae6824394&";
-		private static readonly string _apiURI = "api.openweathermap.org/data/2.5/";
+		private static readonly string _apiURI = "http://api.openweathermap.org/data/2.5/";
 
 		private static string GetRequestModeString(ForecastMode mode)
 		{

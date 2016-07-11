@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="KodiWeather.MainPage"
-    mc:Ignorable="d" Width="690">
+    mc:Ignorable="d" Width="Auto">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
@@ -15,8 +15,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RelativePanel Grid.ColumnSpan="2">
-            <Button Name="SplitMenuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="28"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="56" Click="SplitMenuButton_Click" />
+        <RelativePanel Grid.ColumnSpan="2" Background="#FF57CA86">
+            <Button Name="SplitMenuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="28"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="56" Click="SplitMenuButton_Click" Background="#FF3F9060" />
         </RelativePanel>
         <SplitView Name="MenuSplitView" 
                    Grid.Row="1" 
@@ -27,7 +27,7 @@
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" 
                          Name="IconsListBox" 
-                         SelectionChanged="IconsListBox_SelectionChanged">
+                         SelectionChanged="IconsListBox_SelectionChanged" Background="#FF60C740">
                     <ListBoxItem Name="LBItemCurrentWeather">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="28" Text="&#xE80F;" />
@@ -61,8 +61,9 @@
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="MainWindowFrame" Margin="0,0,-466,0" Content="">
-                    
+                <Frame x:Name="MainWindowFrame" Margin="0,0,-1061,0">
+                    <Image x:Name="MainImage" Margin="-10,0,0,0" Stretch="Fill"/>
+
                 </Frame>
             </SplitView.Content>
         </SplitView>

@@ -1,6 +1,7 @@
 ﻿using KodiWeatherCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,26 +26,39 @@ namespace KodiWeather
 	/// </summary>
 	public sealed partial class CurrentWeatherPage : Page
 	{
+		static WeatherModel _model;
 		public CurrentWeatherPage()
 		{
 			this.InitializeComponent();
 		}
 		
 
-		private async void Page_Loaded(object sender, RoutedEventArgs e)
+		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			try
+			_model = WeatherCache.CurrentWeatherModelCache;
+			PageInitialize();
+		}
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private async void PageInitialize()
+		{
+			if (_model == null)
 			{
-				WeatherModel model = new WeatherModel();
-				model = await WeatherProvider.GetWeatherAsync(ForecastMode.Current,"Kiev","ua");
-				tbTemperature.Text = model.main.temp.ToString();
-				tbWindSpeed.Text = model.wind.speed.ToString();
-				CWImage.Source = WeatherProvider.GetWeatherIcon(model.weather[0].icon);
+				_model = await WeatherProvider.GetWeatherAsync(ForecastMode.Current, "Kiev", "ua");
 			}
-			catch
-			{
-				tbTemperature.Text = "shit happens";
-			}
+			tbTemperature.Text = _model.main.temp.ToString();
+			tbWindSpeed.Text = _model.wind.speed.ToString();
+			CWImage.Source = WeatherProvider.GetWeatherIcon(_model.weather[0].icon);
+			BackgroundInit(_model.weather[0].icon);
+		}
+
+		private void BackgroundInit(string weatherType)
+		{
+			BackgroundImage.Source = WeatherProvider.GetWeatherBackground(weatherType);
 		}
 	}
 }

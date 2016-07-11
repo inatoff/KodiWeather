@@ -122,6 +122,12 @@
     <None Include="KodiWeather_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\WeatherBackgrounds\cloudyD.jpg" />
+    <Content Include="Assets\WeatherBackgrounds\cloudyN.png" />
+    <Content Include="Assets\WeatherBackgrounds\moonN.png" />
+    <Content Include="Assets\WeatherBackgrounds\rainyD.jpg" />
+    <Content Include="Assets\WeatherBackgrounds\rainyN.png" />
+    <Content Include="Assets\WeatherBackgrounds\sunnyD.png" />
     <Content Include="Assets\WeatherIco\001lighticons-90.png" />
     <Content Include="Assets\WeatherIco\001lighticons-91.png" />
     <Content Include="Assets\WeatherIco\001lighticons-93.png" />
